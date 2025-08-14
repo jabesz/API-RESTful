@@ -34,7 +34,7 @@ public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
 
   @Column(name = "username", length = 100, nullable = false, unique = true)
   @NotBlank(groups = CreateUser.class)
