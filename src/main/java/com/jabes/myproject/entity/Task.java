@@ -1,7 +1,5 @@
 package com.jabes.myproject.entity;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -20,34 +19,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "users")
+@Table(name = "tasks")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-  public interface CreateUser {
-  }
-
-  public interface UpdateUser {
-  }
-
+public class Task {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+  
+  @ManyToOne
+  @JoinColumn(name = "user_id", nullable = false, updatable = false)
+  private User user;
 
-  @Column(name = "username", length = 100, nullable = false, unique = true)
-  @NotBlank(groups = CreateUser.class)
-  @Size(groups = CreateUser.class, min = 2, max = 100)
-  private String username;
-
-  @Column(name = "password", length = 60, nullable = false)
-  @NotBlank(groups = { CreateUser.class, UpdateUser.class })
-  @Size(groups = { CreateUser.class, UpdateUser.class }, min = 2, max = 100)
-  private String password;
-
-  @OneToMany(mappedBy = "user")
-  private List<Task> tasks = new ArrayList<Task>();
+  @Column(name = "description", length = 255, nullable = false)
+  @NotBlank
+  @Size(min = 1, max = 255)
+  private String description;
 
   @Override
   public int hashCode() {
@@ -63,17 +52,16 @@ public class User {
       return true;
     if (obj == null)
       return false;
-    if (!(obj instanceof User))
+    if (!(obj instanceof Task))
       return false;
-    User other = (User) obj;
+    Task other = (Task) obj;
     if (this.id == null)
       if (other.id != null)
         return false;
       else if (!this.id.equals(other.id))
         return false;
-    return Objects.equals(this.id, other.id) && Objects.equals(this.username, other.username)
-        && Objects.equals(this.password, other.password);
+    return Objects.equals(this.id, other.id) && Objects.equals(this.user, other.user)
+        && Objects.equals(this.description, other.description);
 
   }
-
 }
