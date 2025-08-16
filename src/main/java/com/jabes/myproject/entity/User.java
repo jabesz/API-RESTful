@@ -26,6 +26,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
+  
   public interface CreateUser {
   }
 
