@@ -48,6 +48,7 @@ public class User {
   private String password;
 
   @OneToMany(mappedBy = "user")
+  @com.fasterxml.jackson.annotation.JsonManagedReference
   private List<Task> tasks = new ArrayList<Task>();
 
   @Override

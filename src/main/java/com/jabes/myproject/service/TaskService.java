@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jabes.myproject.entity.Task;
 import com.jabes.myproject.entity.User;
 import com.jabes.myproject.repository.TaskRepository;
+import java.util.List;
 
 @Service
 public class TaskService {
@@ -23,6 +24,11 @@ public class TaskService {
     Optional<Task> task = this.taskRepository.findById(id);
     return task.orElseThrow(() -> new RuntimeException("Tarefa nao encontrada! id: " + id
     + ", tipo: " + Task.class.getName()));
+  }
+
+  public List<Task> findAllByUserId(Long userId) {
+    List<Task> tasks = this.taskRepository.findByUser_id(userId);
+    return tasks;
   }
 
   @Transactional

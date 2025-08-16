@@ -23,13 +23,15 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Task {
+public class Task 
+{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   
   @ManyToOne
   @JoinColumn(name = "user_id", nullable = false, updatable = false)
+  @com.fasterxml.jackson.annotation.JsonBackReference
   private User user;
 
   @Column(name = "description", length = 255, nullable = false)
