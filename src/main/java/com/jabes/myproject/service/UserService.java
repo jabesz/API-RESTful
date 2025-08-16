@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.jabes.myproject.entity.User;
-import com.jabes.myproject.repository.TaskRepository;
 import com.jabes.myproject.repository.UserRepository;
 
 @Service
