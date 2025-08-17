@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jabes.myproject.entity.Task;
 import com.jabes.myproject.entity.User;
 import com.jabes.myproject.repository.TaskRepository;
+import com.jabes.myproject.service.exceptions.ObjectNotFoundException;
+
 import java.util.List;
 
 @Service
@@ -26,7 +28,7 @@ public class TaskService {
 
   public Task findById(Long id) {
     Optional<Task> task = this.taskRepository.findById(id);
-    return task.orElseThrow(() -> new RuntimeException("Tarefa nao encontrada! id: " + id
+    return task.orElseThrow(() -> new ObjectNotFoundException("Tarefa nao encontrada! id: " + id
     + ", tipo: " + Task.class.getName()));
   }
 

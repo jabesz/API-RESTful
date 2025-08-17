@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.jabes.myproject.entity.User;
 import com.jabes.myproject.repository.UserRepository;
+import com.jabes.myproject.service.exceptions.ObjectNotFoundException;
 
 @Service
 public class UserService {
@@ -20,7 +21,7 @@ public class UserService {
 
   public User findById(Long id){
     Optional<User> user = this.userRepository.findById(id);
-    return user.orElseThrow(() -> new RuntimeException(
+    return user.orElseThrow(() -> new ObjectNotFoundException(
       "Usuario não encontrado! id: " + id + ", Tipo: " + User.class.getName()
     ));
   }
