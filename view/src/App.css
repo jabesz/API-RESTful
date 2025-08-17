@@ -1,0 +1,67 @@
+.App {
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.custom-header {
+  background: linear-gradient(70deg, #aa1983 0%, #1174de 100%);
+  color: #fff;
+  padding: 1.5rem 0;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.custom-header-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.custom-font {
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  color: white;
+}
+
+.custom-table {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+.custom-table th {
+  background: #007bff;
+  color: #fff;
+  font-weight: 600;
+}
+.custom-table td {
+  color: #333;
+}
+.custom-table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

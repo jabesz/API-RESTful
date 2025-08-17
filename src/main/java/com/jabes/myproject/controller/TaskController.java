@@ -29,6 +29,11 @@ public class TaskController {
   @Autowired
   private TaskService taskService;
 
+  @GetMapping
+  public ResponseEntity<List<Task>> findAll() {
+    return ResponseEntity.ok(taskService.findAll());
+  }
+
   @GetMapping("/{id}")
   public ResponseEntity<Task> findById(@PathVariable Long id) {
     Task obj = this.taskService.findById(id);

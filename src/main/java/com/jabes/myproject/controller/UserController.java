@@ -1,6 +1,7 @@
 package com.jabes.myproject.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -27,6 +28,11 @@ public class UserController {
   
   @Autowired
   private UserService userService;
+
+  @GetMapping
+  public ResponseEntity<List<User>> findAll() {
+    return ResponseEntity.ok(userService.findAll());
+  }
 
   @GetMapping("/{id}")
   public ResponseEntity<User> findById(@PathVariable Long id) {

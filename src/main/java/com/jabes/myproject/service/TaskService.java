@@ -20,6 +20,10 @@ public class TaskService {
   @Autowired
   private UserService userService;
 
+  public List<Task> findAll() {
+    return this.taskRepository.findAll();
+  }
+
   public Task findById(Long id) {
     Optional<Task> task = this.taskRepository.findById(id);
     return task.orElseThrow(() -> new RuntimeException("Tarefa nao encontrada! id: " + id
